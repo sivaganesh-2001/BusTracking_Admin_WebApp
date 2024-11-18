@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Driver</title>
+    <link rel="stylesheet" href="../css/updatedriverstyles.css">
+</head>
+<body>
+    <h1>Search Driver</h1>
+    <form action="/search_update_driver" method="POST">
+        <label for="phone">Enter Phone Number:</label>
+        <input type="text" id="phone" name="phone" placeholder="Phone Number">
+        <button type="submit">Search</button>
+    </form>
+    
+    <h1>Update Driver</h1>
+    
+    <% if (user) { %>
+        <!-- User details form -->
+        <form action="/update_driver" method="POST">
+            <!-- Input fields for updated data -->
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="FirstName" value="<%= user.FirstName %>"><br>
+            
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="LastName" value="<%= user.LastName %>"><br>
+            
+            <label for="licenseNo">License Number:</label>
+            <input type="text" id="licenseNo" name="LicenseNo" value="<%= user.LicenseNo %>"><br>
+            
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="DOB" value="<%= user.DOB %>"><br>
+            
+            <label for="newPhone">New Phone:</label>
+            <input type="text" id="newPhone" name="Phone" value="<%= user.Phone %>"><br>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="Password" value="<%= user.Password %>"><br>
+            
+            <!-- Hidden input field to send the driver's original phone number -->
+            <input type="hidden" name="originalPhone" value="<%= user.Phone %>">
+
+            <!-- Submit button -->
+            <button type="submit">Update</button>
+        </form>
+    <% } else { %>
+        <p>No user found</p>
+    <% } %>
+    
+    <!-- Go Back button -->
+    <button onclick="goBack()">Go Back</button>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

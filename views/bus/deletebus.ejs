@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search and Delete Bus</title>
+    <link rel="stylesheet" href="../css/deletebusstyles.css">
+</head>
+<body>
+    <h1>Delete Bus</h1>
+    <form action="/search_delete_bus" method="POST">
+        <label for="busNumber">Enter Bus Number:</label>
+        <input type="text" id="busNumber" name="busNumber" placeholder="Bus Number">
+        <button type="submit">Search</button>
+    </form>
+
+    <% if (bus) { %>
+        <h2>Bus Details</h2>
+        <table>
+            <tr>
+                <th>Attribute</th>
+                <th>Value</th>
+            </tr>
+            <% Object.entries(bus).forEach(([key, value]) => { %>
+                <tr>
+                    <td><%= key %>:</td>
+                    <td><%= value %></td>
+                </tr>
+            <% }); %>
+        </table>
+        <form action="/delete_bus" method="POST">
+            <input type="hidden" name="originalBusNumber" value="<%= bus.busNumber %>">
+            <button type="submit">Delete Bus</button>
+        </form>
+    <% } else { %>
+        <p>No bus found</p>
+    <% } %>
+
+    <button onclick="goBack()">Go Back</button>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

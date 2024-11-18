@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency</title>
+    <link rel="stylesheet" href="./css/complaintstyles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Emergency</h1>
+        <div class="complaint-list">
+        <% emergency.forEach(item => { %>
+            <div class="complaint-item">
+                <p><strong>Emergency Type:</strong> <%= item.emergencyData %></p>
+                <p><strong>Sender Email:</strong> <%= item.senderEmail %></p>
+                <p><strong>Timestamp:</strong> <%= new Date(item.timestamp._seconds * 1000).toLocaleString() %></p>
+            </div>
+        <% }); %>
+    </div>
+</body>
+</html>

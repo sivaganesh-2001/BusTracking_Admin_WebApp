@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search and Delete User</title>
+    <link rel="stylesheet" href="../css/deletedriverstyles.css">
+</head>
+<body>
+    <h1>Search and Delete User</h1>
+    <form action="/search_delete_driver" method="POST">
+        <label for="phone">Enter Phone Number:</label>
+        <input type="text" id="phone" name="phone" placeholder="Phone Number">
+        <button type="submit">Search</button>
+    </form>
+
+    <% if (user) { %>
+        <h2>User Details</h2>
+        <table>
+            <tr>
+                <th>Attribute</th>
+                <th>Value</th>
+            </tr>
+            <% Object.entries(user).forEach(([key, value]) => { %>
+                <tr>
+                    <td><%= key %>:</td>
+                    <td><%= value %></td>
+                </tr>
+            <% }); %>
+        </table>
+        <form action="/delete_driver" method="POST">
+            <input type="hidden" name="originalPhone" value="<%= user.Phone %>">
+            <button type="submit">Delete User</button>
+        </form>
+    <% } else { %>
+        <p>No user found</p>
+    <% } %>
+
+    <button onclick="goBack()">Go Back</button>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

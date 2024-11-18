@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Bus</title>
+    <link rel="stylesheet" href="../css/searchbusstyles.css">
+</head>
+<body>
+    <h1>Search Bus</h1>
+    <form action="/search_bus" method="POST">
+        <label for="busNumber">Enter Bus Number:</label>
+        <input type="text" id="busNumber" name="busNumber" placeholder="Bus Number">
+        <button type="submit">Search</button>
+    </form>
+    <% if (bus) { %>
+        <h2>Bus Details</h2>
+        <table>
+            <tr>
+                <th>Attribute</th>
+                <th>Value</th>
+            </tr>
+            <% Object.entries(bus).forEach(([key, value]) => { %>
+                <tr>
+                    <td><%= key %>:</td>
+                    <td><%= value %></td>
+                </tr>
+            <% }); %>
+        </table>
+    <% } else { %>
+        <p>No bus found</p>
+    <% } %>
+
+    <button onclick="goBack()">Go Back</button>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

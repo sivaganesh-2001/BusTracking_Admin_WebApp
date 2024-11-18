@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Bus</title>
+    <link rel="stylesheet" href="../css/updatebusstyles.css">
+</head>
+<body>
+    <h1>Search Bus</h1>
+    <form action="/search_update_bus" method="POST">
+        <label for="busNumber">Enter Bus Number:</label>
+        <input type="text" id="busNumber" name="busNumber" placeholder="Bus Number">
+        <button type="submit">Search</button>
+    </form>
+    
+    <h1>Update Bus</h1>
+    
+    <% if (bus) { %>
+        <!-- Bus details form -->
+        <form action="/update_bus" method="POST">
+            <!-- Input fields for updated data -->
+            <label for="busNumber">Bus Number:</label>
+            <input type="text" id="busNumber" name="busNumber" value="<%= bus.busNumber %>"><br>
+            
+            <label for="startingPoint">Starting Point:</label>
+            <input type="text" id="startingPoint" name="startingPoint" value="<%= bus.from %>"><br>
+            
+            <label for="endingPoint">Ending Point:</label>
+            <input type="text" id="endingPoint" name="endingPoint" value="<%= bus.to %>"><br>
+            
+            <label for="startingTime">Starting Time:</label>
+            <input type="time" id="startingTime" name="startingTime" value="<%= bus.startingTime %>"><br>
+            
+            <label for="endingTime">Ending Time:</label>
+            <input type="time" id="endingTime" name="endingTime" value="<%= bus.endingTime %>"><br>
+            
+            <label for="routes">Routes:</label>
+            <input type="text" id="routes" name="routes" value="<%= bus.busRoute %>"><br>
+            
+            <!-- Add other fields as needed -->
+
+            <!-- Hidden input field to send the bus's original number -->
+            <input type="hidden" name="originalBusNumber" value="<%= bus.busNumber %>">
+
+            <!-- Submit button -->
+            <button type="submit">Update</button>
+        </form>
+    <% } else { %>
+        <p>No bus found</p>
+    <% } %>
+    
+    <!-- Go Back button -->
+    <button onclick="goBack()">Go Back</button>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

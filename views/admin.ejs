@@ -1,0 +1,19 @@
+<!-- views/employees.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Details</title>
+</head>
+<body>
+  <h1>Employee Details</h1>
+  <ul>
+    <% employees.forEach(employee => { %>
+      <li>
+        <strong>Name:</strong> <%= employee.name %> <br>
+        <strong>Email:</strong> <%= employee.email %>
+      </li>
+    <% }); %>
+  </ul>
+</body>
+</html>

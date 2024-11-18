@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <link rel="stylesheet" href="./css/feedbackstyles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Feedback</h1>
+        <div class="feedback-list">
+            <% feedback.forEach(item => { %>
+                <div class="feedback-item">
+                    <p><strong>Email:</strong> <%= item.email %></p>
+                    <p><strong>Feedback:</strong> <%= item.feedback %></p>
+                    <p><strong>Rating:</strong> <%= item.rating %></p>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</body>
+</html>
